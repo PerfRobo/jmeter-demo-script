@@ -16,11 +16,11 @@
         <application.name>JMETER</application.name>
         <application.version>1.0</application.version>
         <!-- lt-dash url  -->
-        <ltdashUrl>http://targetsio:3000</ltdashUrl>
+        <ltdashUrl>http://172.17.0.4:3000</ltdashUrl>
         <!-- Default test environment  -->
         <activeEnvironment>local</activeEnvironment>
         <!-- targets-io host -->
-        <targetsioHost>targetsio</targetsioHost>
+        <targetsioHost>172.17.0.4</targetsioHost>
         <targetsioPort>3000</targetsioPort>
         <!-- graphite host -->
         <graphiteHost>graphite</graphiteHost>
@@ -162,7 +162,7 @@
             <id>tst</id>
             <activation/>
             <properties>
-                <host>dropwizard</host>
+                <host>172.17.0.5</host>
                 <port>8080</port>
             </properties>
         </profile>
@@ -170,7 +170,7 @@
             <id>acc</id>
             <activation/>
             <properties>
-                <host>dropwizard</host>
+                <host>172.17.0.5</host>
                 <port>8080</port>
             </properties>
         </profile>
