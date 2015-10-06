@@ -24,7 +24,7 @@
           </elementProp>
           <elementProp name="host" elementType="Argument">
             <stringProp name="Argument.name">host</stringProp>
-            <stringProp name="Argument.value">172.17.0.5</stringProp>
+            <stringProp name="Argument.value">dropwizard</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="port" elementType="Argument">
@@ -59,7 +59,7 @@
           </elementProp>
           <elementProp name="targetsioHost" elementType="Argument">
             <stringProp name="Argument.name">targetsioHost</stringProp>
-            <stringProp name="Argument.value">172.17.0.4</stringProp>
+            <stringProp name="Argument.value">targetsio</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="targetsioPort" elementType="Argument">
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="graphiteNode" elementType="Argument">
             <stringProp name="Argument.name">graphiteNode</stringProp>
-            <stringProp name="Argument.value">${__P(graphiteHost,)} </stringProp>
+            <stringProp name="Argument.value">graphite</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -310,7 +310,7 @@
               </elementProp>
               <elementProp name="graphiteHost" elementType="Argument">
                 <stringProp name="Argument.name">graphiteHost</stringProp>
-                <stringProp name="Argument.value">172.17.0.2</stringProp>
+                <stringProp name="Argument.value">${graphiteNode}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="graphitePort" elementType="Argument">
