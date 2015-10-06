@@ -75,6 +75,7 @@
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
     </TestPlan>
     <hashTree>
       <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
@@ -110,8 +111,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${targetsioHost}</stringProp>
-          <stringProp name="HTTPSampler.port">${targetsioPort}</stringProp>
+          <stringProp name="HTTPSampler.domain">targetsio</stringProp>
+          <stringProp name="HTTPSampler.port">3000</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -377,8 +378,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${targetsioHost}</stringProp>
-          <stringProp name="HTTPSampler.port">${targetsioPort}</stringProp>
+          <stringProp name="HTTPSampler.domain">targetsio</stringProp>
+          <stringProp name="HTTPSampler.port">3000</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
