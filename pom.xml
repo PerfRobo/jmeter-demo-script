@@ -15,17 +15,15 @@
         <!-- Settings for targets-io dashboard -->
         <application.name>JMETER</application.name>
         <application.version>1.0</application.version>
-        <!-- lt-dash url  -->
-        <ltdashUrl>http://172.17.0.4:3000</ltdashUrl>
         <!-- Default test environment  -->
         <activeEnvironment>local</activeEnvironment>
         <!-- targets-io host -->
-        <targetsioHost>172.17.0.4</targetsioHost>
+        <targetsioHost>targetsio</targetsioHost>
         <targetsioPort>3000</targetsioPort>
         <!-- graphite host -->
         <graphiteHost>graphite</graphiteHost>
         <!-- Default Graphite prefix -->
-        <graphitePrefix>jmeter.${application.name}</graphitePrefix>
+        <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
         <!-- By default Jenkins build Url is used -->
         <buildResultKey>${BUILD_URL}</buildResultKey>
         <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
@@ -161,7 +159,7 @@
             <id>tst</id>
             <activation/>
             <properties>
-                <host>172.17.0.5</host>
+                <host>dropwizard</host>
                 <port>8080</port>
             </properties>
         </profile>
@@ -169,7 +167,7 @@
             <id>acc</id>
             <activation/>
             <properties>
-                <host>172.17.0.5</host>
+                <host>dropwizard</host>
                 <port>8080</port>
             </properties>
         </profile>
