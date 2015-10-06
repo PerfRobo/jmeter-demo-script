@@ -136,7 +136,7 @@
             <id>demo</id>
             <activation/>
             <properties>
-                <threads>20</threads>
+                <threads>10</threads>
                 <rampUp>300</rampUp>
                 <loopCount>300</loopCount>
                 <dashboardName>DEMO</dashboardName>
