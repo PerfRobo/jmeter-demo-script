@@ -49,23 +49,22 @@
                             <jMeterProcessJVMSettings>
                                 <xms>1024</xms>
                                 <xmx>1024</xmx>
-                                <arguments>
-                                    <argument>-DproductName=${application.name}</argument>
-                                    <argument>-DdashboardName=${dashboardId}</argument>
-                                    <argument>-DdashboardName=${dashboardId}</argument>
-                                    <argument>-DbuildResultKey=${buildResultKey}</argument>
-                                    <argument>-DbuildId=${buildId}</argument>
-                                    <argument>-DrootPathPrefix=${graphitePrefix}</argument>
-                                    <argument>-Dthreads=${threads}</argument>
-                                    <argument>-DrampUp=${rampUp}</argument>
-                                    <argument>-DloopCount=${loopCount}</argument>
-                                    <argument>-Dhost=${host}</argument>
-                                    <argument>-Dport=${port}</argument>
-                                    <argument>-DtargetsioHost=${targetsioHost}</argument>
-                                    <argument>-DtargetsioPort=${targetsioPort}</argument>
-                                    <argument>-DgraphiteHost=${graphiteHost}</argument>
-                                </arguments>
                             </jMeterProcessJVMSettings>
+                            <propertiesUser>
+                                <productName>${application.name}</productName>
+                                <dashboardName>${dashboardName}</dashboardName>
+                                <buildResultKey>${buildResultKey}</buildResultKey>
+                                <buildId>${buildId}</buildId>
+                                <graphitePrefix>${graphitePrefix}</graphitePrefix>
+                                <threads>${threads}</threads>
+                                <rampUp>${rampUp}</rampUp>
+                                <loopCount>${loopCount}</loopCount>
+                                <host>${host}</host>
+                                <port>${port}</port>
+                                <targetsioHost>${targetsioHost}</targetsioHost>
+                                <targetsioPort>${targetsioPort}</targetsioPort>
+                                <graphiteHost>${graphiteHost}</graphiteHost>
+                            </propertiesUser>
                         </configuration>
                     </execution>
                 </executions>
@@ -142,7 +141,7 @@
                 <threads>20</threads>
                 <rampUp>300</rampUp>
                 <loopCount>300</loopCount>
-                <dashboardId>DEMO</dashboardId>
+                <dashboardName>DEMO</dashboardName>
                 <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
             </properties>
         </profile>

@@ -6,73 +6,7 @@
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="productName" elementType="Argument">
-            <stringProp name="Argument.name">productName</stringProp>
-            <stringProp name="Argument.value">${__P(productName,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="dashboardName" elementType="Argument">
-            <stringProp name="Argument.name">dashboardName</stringProp>
-            <stringProp name="Argument.value">${__P(dashboardName,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="testRunId" elementType="Argument">
-            <stringProp name="Argument.name">testRunId</stringProp>
-            <stringProp name="Argument.value">${__P(buildId,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="host" elementType="Argument">
-            <stringProp name="Argument.name">host</stringProp>
-            <stringProp name="Argument.value">&quot;dropwizard&quot;</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="port" elementType="Argument">
-            <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">8080</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="threads" elementType="Argument">
-            <stringProp name="Argument.name">threads</stringProp>
-            <stringProp name="Argument.value">${__P(threads,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="rampUp" elementType="Argument">
-            <stringProp name="Argument.name">rampUp</stringProp>
-            <stringProp name="Argument.value">${__P(rampUp,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loopCount" elementType="Argument">
-            <stringProp name="Argument.name">loopCount</stringProp>
-            <stringProp name="Argument.value">${__P(loopCount,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="rootPathPrefix" elementType="Argument">
-            <stringProp name="Argument.name">rootPathPrefix</stringProp>
-            <stringProp name="Argument.value">${__P(rootPathPrefix,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="DbuildResultKey" elementType="Argument">
-            <stringProp name="Argument.name">DbuildResultKey</stringProp>
-            <stringProp name="Argument.value">${__P(buildResultKey,)} </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="targetsioHost" elementType="Argument">
-            <stringProp name="Argument.name">targetsioHost</stringProp>
-            <stringProp name="Argument.value">&quot;targetsio&quot;</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="targetsioPort" elementType="Argument">
-            <stringProp name="Argument.name">targetsioPort</stringProp>
-            <stringProp name="Argument.value">3000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="graphiteNode" elementType="Argument">
-            <stringProp name="Argument.name">graphiteNode</stringProp>
-            <stringProp name="Argument.value">172.17.0.9</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
+        <collectionProp name="Arguments.arguments"/>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
@@ -100,19 +34,19 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;productName&quot;: &quot;${productName}&quot;,&#xd;
-    &quot;dashboardName&quot;: &quot;${dashboardName}&quot;,&#xd;
+    &quot;productName&quot;: &quot;${__P(productName,)}&quot;,&#xd;
+    &quot;dashboardName&quot;: &quot;${__P(dashboardName,)}&quot;,&#xd;
     &quot;eventDescription&quot;: &quot;start&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${testRunId}&quot;,&#xd;
-    &quot;buildResultKey&quot;: &quot;${buildResultKey}&quot;&#xd;
+    &quot;testRunId&quot;: &quot;${__P(buildId,)}&quot;,&#xd;
+    &quot;buildResultKey&quot;: &quot;${__P(buildResultKey,)}&quot;&#xd;
     &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">targetsio</stringProp>
-          <stringProp name="HTTPSampler.port">3000</stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(targetsioHost,)} </stringProp>
+          <stringProp name="HTTPSampler.port">${__P(targetsioPort,)} </stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -175,10 +109,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">300</stringProp>
+          <stringProp name="LoopController.loops">${__P(loopCount,)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">30</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,)}</stringProp>
         <longProp name="ThreadGroup.start_time">1444121261000</longProp>
         <longProp name="ThreadGroup.end_time">1444121261000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -190,8 +124,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">dropwizard</stringProp>
-          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,)}</stringProp>
+          <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -243,8 +177,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">dropwizard</stringProp>
-          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,)}</stringProp>
+          <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -270,8 +204,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">dropwizard</stringProp>
-          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(host,)}</stringProp>
+          <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -311,7 +245,7 @@
               </elementProp>
               <elementProp name="graphiteHost" elementType="Argument">
                 <stringProp name="Argument.name">graphiteHost</stringProp>
-                <stringProp name="Argument.value">graphite</stringProp>
+                <stringProp name="Argument.value">${__P(graphiteHost,)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="graphitePort" elementType="Argument">
@@ -321,7 +255,7 @@
               </elementProp>
               <elementProp name="rootMetricsPrefix" elementType="Argument">
                 <stringProp name="Argument.name">rootMetricsPrefix</stringProp>
-                <stringProp name="Argument.value">jmeter.demo.</stringProp>
+                <stringProp name="Argument.value">${__P(graphitePrefix,)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="summaryOnly" elementType="Argument">
@@ -367,19 +301,19 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;productName&quot;: &quot;${productName}&quot;,&#xd;
-    &quot;dashboardName&quot;: &quot;${dashboardName}&quot;,&#xd;
+    &quot;productName&quot;: &quot;${__P(productName,)}&quot;,&#xd;
+    &quot;dashboardName&quot;: &quot;${__P(dashboardName,)}&quot;,&#xd;
     &quot;eventDescription&quot;: &quot;end&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${testRunId}&quot;,&#xd;
-    &quot;buildResultKey&quot;: &quot;${buildResultKey}&quot;&#xd;
+    &quot;testRunId&quot;: &quot;${__P(buildId,)}&quot;,&#xd;
+    &quot;buildResultKey&quot;: &quot;${__P(buildResultKey,)}&quot;&#xd;
     &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">targetsio</stringProp>
-          <stringProp name="HTTPSampler.port">3000</stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(targetsioHost,)} </stringProp>
+          <stringProp name="HTTPSampler.port">${__P(targetsioPort,)} </stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
