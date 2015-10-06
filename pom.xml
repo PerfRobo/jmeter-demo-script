@@ -28,7 +28,7 @@
         <buildResultKey>${BUILD_URL}</buildResultKey>
         <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
         <activeProfileId>debug</activeProfileId>
-        <buildId>DEBUG</buildId>
+        <testRunId>DEBUG</testRunId>
     </properties>
     <build>
         <plugins>
@@ -52,7 +52,7 @@
                                 <productName>${application.name}</productName>
                                 <dashboardName>${dashboardName}</dashboardName>
                                 <buildResultKey>${buildResultKey}</buildResultKey>
-                                <buildId>${buildId}</buildId>
+                                <testRunId>${testRunId}</testRunId>
                                 <graphitePrefix>${graphitePrefix}</graphitePrefix>
                                 <threads>${threads}</threads>
                                 <rampUp>${rampUp}</rampUp>
@@ -102,7 +102,7 @@
             <properties>
                 <activeProfileId>stress</activeProfileId>
                 <dashboardId>STRESS</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -111,7 +111,7 @@
             <properties>
                 <activeProfileId>load</activeProfileId>
                 <dashboardId>LOAD</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -120,7 +120,7 @@
             <properties>
                 <activeProfileId>endurance</activeProfileId>
                 <dashboardId>ENDURANCE</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -129,7 +129,7 @@
             <properties>
                 <activeProfileId>failover</activeProfileId>
                 <dashboardId>FAILOVER</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -140,7 +140,7 @@
                 <rampUp>300</rampUp>
                 <loopCount>300</loopCount>
                 <dashboardName>DEMO</dashboardName>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
@@ -150,7 +150,7 @@
                 <activeProfileId>nightly</activeProfileId>
                 <dashboardId>NIGHTLY</dashboardId>
                 <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
                 <graphitePrefix>gatling2.nightly</graphitePrefix>
             </properties>
         </profile>

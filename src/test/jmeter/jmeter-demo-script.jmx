@@ -37,7 +37,7 @@
     &quot;productName&quot;: &quot;${__P(productName,)}&quot;,&#xd;
     &quot;dashboardName&quot;: &quot;${__P(dashboardName,)}&quot;,&#xd;
     &quot;eventDescription&quot;: &quot;start&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${__P(buildId,)}&quot;,&#xd;
+    &quot;testRunId&quot;: &quot;${__P(testRunId,)}&quot;,&#xd;
     &quot;buildResultKey&quot;: &quot;${__P(buildResultKey,)}&quot;&#xd;
     &#xd;
 }</stringProp>
@@ -304,7 +304,7 @@
     &quot;productName&quot;: &quot;${__P(productName,)}&quot;,&#xd;
     &quot;dashboardName&quot;: &quot;${__P(dashboardName,)}&quot;,&#xd;
     &quot;eventDescription&quot;: &quot;end&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${__P(buildId,)}&quot;,&#xd;
+    &quot;testRunId&quot;: &quot;${__P(testRunId,)}&quot;,&#xd;
     &quot;buildResultKey&quot;: &quot;${__P(buildResultKey,)}&quot;&#xd;
     &#xd;
 }</stringProp>
