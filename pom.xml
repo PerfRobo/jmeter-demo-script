@@ -1,52 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-   
-
     <groupId>com.jmeter.demo</groupId>
     <artifactId>jmeter-demo-script</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <!--<parent>-->
-        <!--<groupId>com.afklm.maven.pom</groupId>-->
-        <!--<artifactId>kl-projects-pom</artifactId>-->
-        <!--<version>3.1.6</version>-->
+    <!--<groupId>com.afklm.maven.pom</groupId>-->
+    <!--<artifactId>kl-projects-pom</artifactId>-->
+    <!--<version>3.1.6</version>-->
     <!--</parent>-->
-
     <properties>
- 
         <encoding>UTF-8</encoding>
         <maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
-        
         <!-- Settings for targets-io dashboard -->
         <application.name>JMETER</application.name>
         <application.version>1.0</application.version>
-
-        <!-- lt-dash url  -->
-        <ltdashUrl>http://targetsio:3000</ltdashUrl>
-        
-        
         <!-- Default test environment  -->
         <activeEnvironment>local</activeEnvironment>
-
+        <!-- targets-io host -->
+        <targetsioHost>targetsio</targetsioHost>
+        <targetsioPort>3000</targetsioPort>
+        <!-- graphite host -->
+        <graphiteHost>graphite</graphiteHost>
         <!-- Default Graphite prefix -->
-        <graphitePrefix>jmeter.${application.name}</graphitePrefix>
-
+        <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
         <!-- By default Jenkins build Url is used -->
         <buildResultKey>${BUILD_URL}</buildResultKey>
-
-        
         <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
         <activeProfileId>debug</activeProfileId>
-        <buildId>DEBUG</buildId>
-
-        
-        
+        <testRunId>DEBUG</testRunId>
     </properties>
-
-<build>
-       <plugins>
+    <build>
+        <plugins>
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
@@ -59,30 +44,48 @@
                             <goal>jmeter</goal>
                         </goals>
                         <configuration>
-                                <jMeterProcessJVMSettings>
-                                    <xms>1024</xms>
-                                    <xmx>1024</xmx>
-                                    <arguments>
-                                        <argument>-DproductName=${application.name}</argument>
-                                        <argument>-DdashboardName=${dashboardId}</argument>
-                                        <argument>-DdashboardName=${dashboardId}</argument>
-                                        <argument>-DbuildResultKey=${buildResultKey}</argument>
-                                        <argument>-DbuildId=${buildId}</argument>
-                                        <argument>-DrootPathPrefix=${graphitePrefix}</argument>
-                                        <argument>-Dthreads=${threads}</argument>
-                                        <argument>-DrampUp=${rampUp}</argument>
-                                        <argument>-DloopCount=${loopCount}</argument>
-                                        <argument>-Dhost=${host}</argument>
-                                        <argument>-Dport=${port}</argument>
-                                    </arguments>
-                                </jMeterProcessJVMSettings>
-                            </configuration>
+                            <jMeterProcessJVMSettings>
+                                <xms>1024</xms>
+                                <xmx>1024</xmx>
+                            </jMeterProcessJVMSettings>
+                            <propertiesUser>
+                                <productName>${application.name}</productName>
+                                <dashboardName>${dashboardName}</dashboardName>
+                                <buildResultKey>${buildResultKey}</buildResultKey>
+                                <testRunId>${testRunId}</testRunId>
+                                <graphitePrefix>${graphitePrefix}</graphitePrefix>
+                                <threads>${threads}</threads>
+                                <rampUp>${rampUp}</rampUp>
+                                <loopCount>${loopCount}</loopCount>
+                                <host>${host}</host>
+                                <port>${port}</port>
+                                <targetsioHost>${targetsioHost}</targetsioHost>
+                                <targetsioPort>${targetsioPort}</targetsioPort>
+                                <graphiteHost>${graphiteHost}</graphiteHost>
+                            </propertiesUser>
+                        </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>kg.apc</groupId>
+                        <artifactId>jmeter-plugins</artifactId>
+                        <version>1.0.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-math3</artifactId>
+                        <version>3.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-pool2</artifactId>
+                        <version>2.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <!-- ************************************************************************ ==
           == Below we have defined two sets of profiles, which control the type of    ==
@@ -92,119 +95,81 @@
           ==                                                                          ==
           == mvn gatling:execute -Pstress -Pae1                                       ==
           == ************************************************************************ -->
-
         <!-- Test Profiles -->
-
         <profile>
             <id>stress</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
                 <activeProfileId>stress</activeProfileId>
                 <dashboardId>STRESS</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
             <id>load</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
                 <activeProfileId>load</activeProfileId>
                 <dashboardId>LOAD</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
             <id>endurance</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
                 <activeProfileId>endurance</activeProfileId>
                 <dashboardId>ENDURANCE</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
             <id>failover</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
                 <activeProfileId>failover</activeProfileId>
                 <dashboardId>FAILOVER</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
             <id>demo</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
-                <threads>20</threads>
+                <threads>10</threads>
                 <rampUp>300</rampUp>
                 <loopCount>300</loopCount>
-                <dashboardId>DEMO</dashboardId>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <dashboardName>DEMO</dashboardName>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
             <id>nightly</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
                 <activeProfileId>nightly</activeProfileId>
                 <dashboardId>NIGHTLY</dashboardId>
                 <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
-                <buildId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</buildId>
+                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
                 <graphitePrefix>gatling2.nightly</graphitePrefix>
             </properties>
         </profile>
-
-
         <!-- Test Environments -->
         <profile>
             <id>tst</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
-                <activeEnvironment>tst</activeEnvironment>
+                <host>dropwizard</host>
+                <port>8080</port>
             </properties>
         </profile>
-
         <profile>
             <id>acc</id>
-            <activation>
-            </activation>
+            <activation/>
             <properties>
-                <host>172.21.42.174</host>
-                <port>3000</port>
+                <host>dropwizard</host>
+                <port>8080</port>
             </properties>
         </profile>
-
-        <!-- This profile can be used to trigger the RestartServers simulation in between two sequential tests when using the batch files  -->
-        <profile>
-            <id>restart</id>
-            <activation>
-            </activation>
-            <properties>
-                <applicationSimulation>com.gatling.demo.gatling.helpers.RestartServers</applicationSimulation>
-            </properties>
-        </profile>
-
-
-
-        <!-- This profile can be used to route the traffic through a proxy for debugging  -->
-        <profile>
-            <id>proxy</id>
-            <activation>
-            </activation>
-            <properties>
-                <useProxy>true</useProxy>
-            </properties>
-        </profile>
-
-
-
-
     </profiles>
 </project>
