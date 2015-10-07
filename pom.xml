@@ -26,9 +26,6 @@
         <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
         <!-- By default Jenkins build Url is used -->
         <buildResultKey>${BUILD_URL}</buildResultKey>
-        <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
-        <activeProfileId>debug</activeProfileId>
-        <testRunId>DEBUG</testRunId>
     </properties>
     <build>
         <plugins>
@@ -139,7 +136,7 @@
                 <threads>10</threads>
                 <rampUp>300</rampUp>
                 <loopCount>300</loopCount>
-                <dashboardName>DEMO</dashboardName>
+                <dashboardName>LOAD</dashboardName>
                 <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
@@ -150,7 +147,7 @@
                 <activeProfileId>nightly</activeProfileId>
                 <dashboardId>NIGHTLY</dashboardId>
                 <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${application.name}-${application.version}-${maven.build.timestamp}</testRunId>
                 <graphitePrefix>gatling2.nightly</graphitePrefix>
             </properties>
         </profile>
