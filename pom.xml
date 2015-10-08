@@ -137,7 +137,7 @@
                 <rampUp>300</rampUp>
                 <loopCount>300</loopCount>
                 <dashboardName>LOAD</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <testRunId>${application.name}-${application.version}-${maven.build.timestamp}</testRunId>
             </properties>
         </profile>
         <profile>
