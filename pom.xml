@@ -135,7 +135,7 @@
             <properties>
                 <threads>10</threads>
                 <rampUp>300</rampUp>
-                <loopCount>300</loopCount>
+                <loopCount>50</loopCount>
                 <dashboardName>LOAD</dashboardName>
                 <testRunId>${application.name}-${application.version}-${maven.build.timestamp}</testRunId>
             </properties>
