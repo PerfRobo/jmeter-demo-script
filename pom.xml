@@ -23,9 +23,9 @@
         <!-- graphite host -->
         <graphiteHost>graphite</graphiteHost>
         <!-- Default Graphite prefix -->
-        <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
+        
         <!-- By default Jenkins build Url is used -->
-        <buildResultKey>${BUILD_URL}</buildResultKey>
+        <buildResultsUrl>${BUILD_URL}</buildResultsUrl>
         <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
         <activeProfileId>debug</activeProfileId>
         <testRunId>DEBUG</testRunId>
@@ -51,7 +51,7 @@
                             <propertiesUser>
                                 <productName>${application.name}</productName>
                                 <dashboardName>${dashboardName}</dashboardName>
-                                <buildResultKey>${buildResultKey}</buildResultKey>
+                                <buildResultsUrl>${buildResultsUrl}</buildResultsUrl>
                                 <testRunId>${testRunId}</testRunId>
                                 <graphitePrefix>${graphitePrefix}</graphitePrefix>
                                 <threads>${threads}</threads>
@@ -141,6 +141,7 @@
                 <loopCount>300</loopCount>
                 <dashboardName>DEMO</dashboardName>
                 <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
             </properties>
         </profile>
         <profile>
@@ -149,7 +150,7 @@
             <properties>
                 <activeProfileId>nightly</activeProfileId>
                 <dashboardId>NIGHTLY</dashboardId>
-                <buildResultKey>${bamboo.buildResultsUrl}</buildResultKey>
+                <buildResultsUrl>${bamboo.buildResultsUrl}</buildResultsUrl>
                 <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
                 <graphitePrefix>gatling2.nightly</graphitePrefix>
             </properties>
