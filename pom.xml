@@ -13,29 +13,125 @@
         <encoding>UTF-8</encoding>
         <maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
         <!-- Settings for targets-io dashboard -->
-        <application.name>JMETER</application.name>
-        <application.version>1.0</application.version>
+        <targetsio.productName>MEAN</targetsio.productName>
+        <targetsio.productRelease>1.0</targetsio.productRelease>
+
+        <!-- default dashboard -->
+        <targetsio.dashboardName>JMETER-LOAD</targetsio.dashboardName>
         <!-- Default test environment  -->
-        <activeEnvironment>local</activeEnvironment>
+        <activeEnvironment>acc</activeEnvironment>
+
         <!-- targets-io host -->
-        <targetsioHost>targetsio</targetsioHost>
-        <targetsioPort>3000</targetsioPort>
+        <targetsio.server>targetsio</targetsio.server>
+        <targetsio.port>3000</targetsio.port>
         <!-- graphite host -->
-        <graphiteHost>graphite</graphiteHost>
+        <targetsio.graphite.server>graphite</targetsio.graphite.server>
+        <!-- graphite port -->
+        <targetsio.graphite.port>2003</targetsio.graphite.port>
         <!-- Default Graphite prefix -->
-        <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
+        <targetsio.graphite.rootMetricsPrefix>jmeter.mean.</targetsio.graphite.rootMetricsPrefix>
         <!-- By default Jenkins build Url is used -->
-        <buildResultsUrl>${BUILD_URL}</buildResultsUrl>
+        <targetsio.buildResultsUrl>${BUILD_URL}</targetsio.buildResultsUrl>
         <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
         <activeProfileId>debug</activeProfileId>
-        <testRunId>DEBUG</testRunId>
+        <targetsio.testRunId>DEBUG</targetsio.testRunId>
+
+
+
     </properties>
     <build>
         <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-dependency-plugin</artifactId>-->
+                <!--<version>2.8</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>copy</id>-->
+                        <!--<phase>verify</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<artifactItems>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.mq</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.mqjms</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.mq.pcf</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.fscontext</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.providerutil</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.dhbcore</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                                    <!--<artifactId>com.klm.jmeter.jms.javaee</artifactId>-->
+                                    <!--<version>1.0</version>-->
+                                <!--</artifactItem>-->
+                            <!--</artifactItems>-->
+                            <!--<outputDirectory>${project.build.directory}\jmeter\lib</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
-                <version>1.10.1</version>
+                <version>2.0.3</version>
+                <configuration>
+                    <propertiesUser>
+                        <targetsio.server>${targetsio.server}</targetsio.server>
+                        <targetsio.port>${targetsio.port}</targetsio.port>
+                        <targetsio.graphite.server>${targetsio.graphite.server}</targetsio.graphite.server>
+                        <targetsio.graphite.port>${targetsio.graphite.port}</targetsio.graphite.port>
+                        <targetsio.graphite.rootMetricsPrefix>${targetsio.graphite.rootMetricsPrefix}</targetsio.graphite.rootMetricsPrefix>
+                        <targetsio.dashboardName>${targetsio.dashboardName}</targetsio.dashboardName>
+                        <targetsio.buildResultsUrl>${targetsio.buildResultsUrl}</targetsio.buildResultsUrl>
+                        <targetsio.testRunId>${targetsio.testRunId}</targetsio.testRunId>
+                        <targetsio.productName>${targetsio.productName}</targetsio.productName>
+                        <targetsio.productRelease>${targetsio.productRelease}</targetsio.productRelease>
+
+                        <test.duration>${test.duration}</test.duration>
+                        <test.threads>${test.threads}</test.threads>
+                        <test.rampup>${test.rampup}</test.rampup>
+
+
+                    </propertiesUser>
+                    <!--<proxyConfig>-->
+                    <!--<host>localhost</host>-->
+                    <!--<port>8888</port>-->
+                    <!--&lt;!&ndash;<username>jimbob</username>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<password>correct horse battery staple</password>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<hostExclusions>localhost|*.lazerycode.com</hostExclusions>&ndash;&gt;-->
+                    <!--</proxyConfig>-->
+                    <jMeterProcessJVMSettings>
+                        <xms>1024</xms>
+                        <xmx>4096</xmx>
+                    </jMeterProcessJVMSettings>
+
+                </configuration>
                 <executions>
                     <execution>
                         <id>jmeter-tests</id>
@@ -43,46 +139,46 @@
                         <goals>
                             <goal>jmeter</goal>
                         </goals>
-                        <configuration>
-                            <jMeterProcessJVMSettings>
-                                <xms>1024</xms>
-                                <xmx>1024</xmx>
-                            </jMeterProcessJVMSettings>
-                            <propertiesUser>
-                                <productName>${application.name}</productName>
-                                <dashboardName>${dashboardName}</dashboardName>
-                                <buildResultsUrl>${buildResultsUrl}</buildResultsUrl>
-                                <testRunId>${testRunId}</testRunId>
-                                <graphitePrefix>${graphitePrefix}</graphitePrefix>
-                                <threads>${threads}</threads>
-                                <rampUp>${rampUp}</rampUp>
-                                <loopCount>${loopCount}</loopCount>
-                                <host>${host}</host>
-                                <port>${port}</port>
-                                <targetsioHost>${targetsioHost}</targetsioHost>
-                                <targetsioPort>${targetsioPort}</targetsioPort>
-                                <graphiteHost>${graphiteHost}</graphiteHost>
-                            </propertiesUser>
-                        </configuration>
+
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>kg.apc</groupId>
-                        <artifactId>jmeter-plugins</artifactId>
-                        <version>1.0.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.commons</groupId>
-                        <artifactId>commons-math3</artifactId>
-                        <version>3.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.commons</groupId>
-                        <artifactId>commons-pool2</artifactId>
-                        <version>2.0</version>
-                    </dependency>
-                </dependencies>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.mq</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.mqjms</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.mq.pcf</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.fscontext</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.providerutil</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.dhbcore</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
+                        <!--<artifactId>com.klm.jmeter.jms.javaee</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
             </plugin>
         </plugins>
     </build>
@@ -93,83 +189,70 @@
           == project runs a load test on the local environment. If you wish to run a  ==
           == stress test on AE1, you can activate the stress and ae1 profiles:        ==
           ==                                                                          ==
-          == mvn gatling:execute -Pstress -Pae1                                       ==
+          == mvn verify -Pstress -Pae1                                       ==
           == ************************************************************************ -->
         <!-- Test Profiles -->
         <profile>
             <id>stress</id>
             <activation/>
             <properties>
-                <activeProfileId>stress</activeProfileId>
-                <dashboardName>STRESS</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <targetsio.dashboardName>JMETER-STRESS</targetsio.dashboardName>
+                <testRunId>${targetsio.productName}-${targetsio.productRelease}-stress-${maven.build.timestamp}</testRunId>
+                <test.duration>900</test.duration>
+                <test.threads>50</test.threads>
+                <test.rampup>300</test.rampup>
             </properties>
         </profile>
+
         <profile>
             <id>load</id>
             <activation/>
             <properties>
-                <activeProfileId>load</activeProfileId>
-                <dashboardName>LOAD</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <targetsio.dashboardName>JMETER-LOAD</targetsio.dashboardName>
+                <testRunId>${targetsio.productName}-${targetsio.productRelease}-load-${maven.build.timestamp}</testRunId>
+                <test.duration>600</test.duration>
+                <test.threads>20</test.threads>
+                <test.rampup>120</test.rampup>
             </properties>
         </profile>
         <profile>
             <id>endurance</id>
             <activation/>
             <properties>
-                <activeProfileId>endurance</activeProfileId>
-                <dashboardName>ENDURANCE</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
+                <targetsio.dashboardName>JMETER-ENDURANCE</targetsio.dashboardName>
+                <testRunId>${targetsio.productName}-${targetsio.productRelease}-endurance-${maven.build.timestamp}</testRunId>
+                <test.duration>174600</test.duration>
+                <test.threads>100</test.threads>
+                <test.rampup>1</test.rampup>
             </properties>
         </profile>
-        <profile>
-            <id>failover</id>
-            <activation/>
-            <properties>
-                <activeProfileId>failover</activeProfileId>
-                <dashboardName>FAILOVER</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
-            </properties>
-        </profile>
-        <profile>
-            <id>demo</id>
-            <activation/>
-            <properties>
-                <threads>10</threads>
-                <rampUp>300</rampUp>
-                <loopCount>50</loopCount>
-                <dashboardName>DEMO</dashboardName>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
-                <graphitePrefix>jmeter.${application.name}.</graphitePrefix>
-            </properties>
-        </profile>
+
         <profile>
             <id>nightly</id>
             <activation/>
             <properties>
-                <activeProfileId>nightly</activeProfileId>
-                <dashboardName>NIGHTLY</dashboardName>
-                <buildResultsUrl>${bamboo.buildResultsUrl}</buildResultsUrl>
-                <testRunId>${application.name}-${application.version}-${activeProfileId}-${maven.build.timestamp}</testRunId>
-                <graphitePrefix>gatling2.nightly</graphitePrefix>
+                <targetsio.dashboardName>JMETER-NIGHTLY</targetsio.dashboardName>
+                <testRunId>${targetsio.productName}-${targetsio.productRelease}-nightly-${maven.build.timestamp}</testRunId>
+               <test.duration>600</test.duration>
+                <test.threads>20</test.threads>
+                <test.rampup>120</test.rampup>
             </properties>
         </profile>
         <!-- Test Environments -->
         <profile>
-            <id>tst</id>
-            <activation/>
-            <properties>
-                <host>dropwizard</host>
-                <port>8080</port>
-            </properties>
-        </profile>
-        <profile>
             <id>acc</id>
             <activation/>
             <properties>
-                <host>dropwizard</host>
-                <port>8080</port>
+                <productHost>mean</productHost>
+                <productPort>3001</productPort>
+            </properties>
+        </profile>
+        <profile>
+            <id>tst</id>
+            <activation/>
+            <properties>
+                <productHost>mean-tst.demo.com</productHost>
+                <productPort>80</productPort>
             </properties>
         </profile>
     </profiles>
