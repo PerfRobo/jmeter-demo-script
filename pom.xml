@@ -116,6 +116,8 @@
                         <test.duration>${test.duration}</test.duration>
                         <test.threads>${test.threads}</test.threads>
                         <test.rampup>${test.rampup}</test.rampup>
+                        <test.productHost>${test.productHost}</test.productHost>
+                        <test.productPort>${test.productPort}</test.productPort>
 
 
                     </propertiesUser>
@@ -243,16 +245,16 @@
             <id>acc</id>
             <activation/>
             <properties>
-                <productHost>mean</productHost>
-                <productPort>3000</productPort>
+                <test.productHost>mean</test.productHost>
+                <test.productPort>3000</test.productPort>
             </properties>
         </profile>
         <profile>
             <id>tst</id>
             <activation/>
             <properties>
-                <productHost>mean-tst.demo.com</productHost>
-                <productPort>80</productPort>
+                <test.productHost>mean-tst.demo.com</test.productHost>
+                <test.productPort>80</test.productPort>
             </properties>
         </profile>
     </profiles>
