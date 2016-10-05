@@ -119,11 +119,10 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-    &quot;productName&quot;: &quot;${targetsio.productName}&quot;,&#xd;
-    &quot;dashboardName&quot;: &quot;${targetsio.dashboardName}&quot;,&#xd;
-    &quot;eventDescription&quot;: &quot;start&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${targetsio.testRunId}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${test.rampup}&quot;&#xd;
+    &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
+    &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
     &#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -202,7 +201,7 @@
         <longProp name="ThreadGroup.start_time">1475690021000</longProp>
         <longProp name="ThreadGroup.end_time">1475690021000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${test.duration}</stringProp>
+        <stringProp name="ThreadGroup.duration">${__P(test.duration,1)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
@@ -218,10 +217,10 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-    &quot;productName&quot;: &quot;${targetsio.productName}&quot;,&#xd;
-    &quot;dashboardName&quot;: &quot;${targetsio.dashboardName}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${targetsio.testRunId}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${test.rampup}&quot;&#xd;
+    &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
+    &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
     &#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -266,12 +265,12 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${test.threads}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${test.rampup}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(test.threads,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(test.rampup,1)}}</stringProp>
         <longProp name="ThreadGroup.start_time">1444121261000</longProp>
         <longProp name="ThreadGroup.end_time">1444121261000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${test.duration}</stringProp>
+        <stringProp name="ThreadGroup.duration">${__P(test.duration,1)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
@@ -652,7 +651,7 @@
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">user_id</stringProp>
-            <stringProp name="RegexExtractor.regex">_id\&quot;:\&quot;(.*)\&quot;</stringProp>
+            <stringProp name="RegexExtractor.regex">_id\&quot;:\&quot;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default">UserUnknown</stringProp>
             <stringProp name="RegexExtractor.match_number"></stringProp>
@@ -937,14 +936,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
-              <stringProp name="VAR">articleId</stringProp>
-              <stringProp name="JSONPATH">$._id</stringProp>
-              <stringProp name="DEFAULT"></stringProp>
-              <stringProp name="VARIABLE"></stringProp>
-              <stringProp name="SUBJECT">BODY</stringProp>
-            </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
-            <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Path PostProcessor" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">articleId</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$._id</stringProp>
@@ -1183,23 +1174,6 @@
               </elementProp>
             </collectionProp>
           </HeaderManager>
-          <hashTree/>
-          <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
-            <stringProp name="VAR">articleIds</stringProp>
-            <stringProp name="JSONPATH">$[*]._id</stringProp>
-            <stringProp name="DEFAULT"></stringProp>
-            <stringProp name="VARIABLE"></stringProp>
-            <stringProp name="SUBJECT">BODY</stringProp>
-          </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
-          <hashTree/>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="false">
-            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-            <stringProp name="RegexExtractor.refname">articleId</stringProp>
-            <stringProp name="RegexExtractor.regex">_id\&quot;:\&quot;(.*)\&quot;</stringProp>
-            <stringProp name="RegexExtractor.template">$0$</stringProp>
-            <stringProp name="RegexExtractor.default"></stringProp>
-            <stringProp name="RegexExtractor.match_number">0</stringProp>
-          </RegexExtractor>
           <hashTree/>
           <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Path PostProcessor" enabled="true">
             <stringProp name="JSONPostProcessor.referenceNames">articleId</stringProp>
@@ -1448,18 +1422,7 @@
           <stringProp name="classname">org.apache.jmeter.visualizers.backend.graphite.GraphiteBackendListenerClient</stringProp>
         </BackendListener>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">users.csv</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.all</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">user</stringProp>
-        </CSVDataSet>
-        <hashTree/>
-        <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+        <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="false">
           <boolProp name="displayJMeterProperties">false</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySamplerProperties">true</boolProp>
@@ -1510,10 +1473,10 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-    &quot;productName&quot;: &quot;${targetsio.productName}&quot;,&#xd;
-    &quot;dashboardName&quot;: &quot;${targetsio.dashboardName}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${targetsio.testRunId}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${test.rampup}&quot;&#xd;
+    &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
+    &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
     &#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -1553,10 +1516,10 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-    &quot;productName&quot;: &quot;${targetsio.productName}&quot;,&#xd;
-    &quot;dashboardName&quot;: &quot;${targetsio.dashboardName}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${targetsio.testRunId}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${test.rampup}&quot;&#xd;
+    &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
+    &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
     &#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
