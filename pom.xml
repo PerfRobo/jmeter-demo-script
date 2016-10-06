@@ -32,9 +32,7 @@
         <targetsio.graphite.rootMetricsPrefix>jmeter.mean.</targetsio.graphite.rootMetricsPrefix>
         <!-- By default Jenkins build Url is used -->
         <targetsio.buildResultsUrl>${BUILD_URL}</targetsio.buildResultsUrl>
-        <!-- Default sets build ID and activeProfileId to DEBUG so no events will be logged to the lt-dash server -->
-        <activeProfileId>debug</activeProfileId>
-        <targetsio.testRunId>DEBUG</targetsio.testRunId>
+
 
 
 
