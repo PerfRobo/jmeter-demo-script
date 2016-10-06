@@ -103,6 +103,9 @@
                         <xmx>4096</xmx>
                     </jMeterProcessJVMSettings>
 
+                    <jmeterExtensions>
+                        <artifact>kg.apc:jmeter-plugins-standard:jar:1.4.0</artifact>
+                    </jmeterExtensions>
 
                     <!--<overrideRootLogLevel>debug</overrideRootLogLevel>-->
 
