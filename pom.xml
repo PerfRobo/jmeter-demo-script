@@ -157,7 +157,7 @@
                 <targetsio.dashboardName>JMETER-LOAD</targetsio.dashboardName>
                 <testRunId>${targetsio.productName}-${targetsio.productRelease}-load-${maven.build.timestamp}</testRunId>
                 <test.duration>600</test.duration>
-                <test.threads>20</test.threads>
+                <test.threads>4</test.threads>
                 <test.rampup>1</test.rampup>
                 <test.throughput>2</test.throughput>
             </properties>
