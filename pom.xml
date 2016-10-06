@@ -42,6 +42,30 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.jayway.jsonpath</groupId>
+                                    <artifactId>json-path</artifactId>
+                                    <version>2.2.0</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}\jmeter\lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
                 <version>2.0.3</version>
@@ -67,17 +91,20 @@
 
 
                     </propertiesUser>
-                    <!--<proxyConfig>-->
-                    <!--<host>localhost</host>-->
-                    <!--<port>8888</port>-->
-                    <!--&lt;!&ndash;<username>jimbob</username>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<password>correct horse battery staple</password>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<hostExclusions>localhost|*.lazerycode.com</hostExclusions>&ndash;&gt;-->
-                    <!--</proxyConfig>-->
+                    <proxyConfig>
+                    <host>localhost</host>
+                    <port>8888</port>
+                    <!--<username>jimbob</username>-->
+                    <!--<password>correct horse battery staple</password>-->
+                    <!--<hostExclusions>localhost|*.lazerycode.com</hostExclusions>-->
+                    </proxyConfig>
                     <jMeterProcessJVMSettings>
                         <xms>1024</xms>
                         <xmx>4096</xmx>
                     </jMeterProcessJVMSettings>
+
+
+                    <!--<overrideRootLogLevel>debug</overrideRootLogLevel>-->
 
                 </configuration>
                 <executions>
@@ -90,6 +117,13 @@
 
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.jayway.jsonpath</groupId>
+                        <artifactId>json-path</artifactId>
+                        <version>2.2.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -122,7 +156,7 @@
                 <targetsio.dashboardName>JMETER-LOAD</targetsio.dashboardName>
                 <testRunId>${targetsio.productName}-${targetsio.productRelease}-load-${maven.build.timestamp}</testRunId>
                 <test.duration>600</test.duration>
-                <test.threads>5</test.threads>
+                <test.threads>20</test.threads>
                 <test.rampup>1</test.rampup>
                 <test.throughput>2</test.throughput>
             </properties>

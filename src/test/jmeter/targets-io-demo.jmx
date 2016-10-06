@@ -77,6 +77,11 @@
             <stringProp name="Argument.value">${__P(test.productPort,3001)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="test.testRunId" elementType="Argument">
+            <stringProp name="Argument.name">test.testRunId</stringProp>
+            <stringProp name="Argument.value">DEBUG-${__time(YMDHMS)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -114,12 +119,12 @@
           </elementProp>
           <elementProp name="targetsio.server" elementType="Argument">
             <stringProp name="Argument.name">targetsio.server</stringProp>
-            <stringProp name="Argument.value">${__P(targetsio.server, targetsio)</stringProp>
+            <stringProp name="Argument.value">${__P(targetsio.server, targetsio)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="targetsio.port" elementType="Argument">
             <stringProp name="Argument.name">targetsio.port</stringProp>
-            <stringProp name="Argument.value">${__P(targetsio.port,3000)</stringProp>
+            <stringProp name="Argument.value">${__P(targetsio.port,3000)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -149,8 +154,8 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
     &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,${test.testRunId})}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}&quot;&#xd;
     &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -241,8 +246,8 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
     &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,${test.testRunId})}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}&quot;&#xd;
     &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -295,9 +300,9 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller" enabled="true"/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller" enabled="false"/>
         <hashTree/>
-        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
           <stringProp name="ConstantTimer.delay">2000</stringProp>
           <stringProp name="RandomTimer.range">100.0</stringProp>
         </UniformRandomTimer>
@@ -1419,7 +1424,7 @@
         <hashTree/>
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
-          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
           <stringProp name="CookieManager.policy">standard</stringProp>
           <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
@@ -1433,10 +1438,15 @@
           <stringProp name="variableName">user</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <intProp name="calcMode">1</intProp>
-          <stringProp name="throughput">${__P(test.throughput,2)}</stringProp>
-        </ConstantThroughputTimer>
+        <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="false">
+          <collectionProp name="load_profile">
+            <collectionProp name="-293784611">
+              <stringProp name="1152040977">${__P(test.throughput,2)}</stringProp>
+              <stringProp name="1152040977">${__P(test.throughput,2)}</stringProp>
+              <stringProp name="53430">600</stringProp>
+            </collectionProp>
+          </collectionProp>
+        </kg.apc.jmeter.timers.VariableThroughputTimer>
         <hashTree/>
       </hashTree>
       <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group" enabled="true">
@@ -1463,8 +1473,8 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
     &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,${test.testRunId})}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}&quot;&#xd;
     &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1506,8 +1516,8 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;productName&quot;: &quot;${__P(targetsio.productName,MEAN)}&quot;,&#xd;
     &quot;dashboardName&quot;: &quot;${__P(targetsio.dashboardName,DEBUG)}&quot;,&#xd;
-    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,DEBUG)}&quot;,&#xd;
-    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}}&quot;&#xd;
+    &quot;testRunId&quot;: &quot;${__P(targetsio.testRunId,${test.testRunId})}&quot;,&#xd;
+    &quot;rampUp&quot;: &quot;${__P(test.rampup,1)}&quot;&#xd;
     &#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1541,7 +1551,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
