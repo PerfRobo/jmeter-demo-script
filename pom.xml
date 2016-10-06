@@ -41,61 +41,6 @@
     </properties>
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                <!--<version>2.8</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>copy</id>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>copy</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<artifactItems>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.mq</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.mqjms</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.mq.pcf</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.fscontext</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.providerutil</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.dhbcore</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                                    <!--<artifactId>com.klm.jmeter.jms.javaee</artifactId>-->
-                                    <!--<version>1.0</version>-->
-                                <!--</artifactItem>-->
-                            <!--</artifactItems>-->
-                            <!--<outputDirectory>${project.build.directory}\jmeter\lib</outputDirectory>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
@@ -144,43 +89,6 @@
 
                     </execution>
                 </executions>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.mq</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.mqjms</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.mq.pcf</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.fscontext</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.providerutil</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.dhbcore</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.klm.jmeter.jms</groupId>-->
-                        <!--<artifactId>com.klm.jmeter.jms.javaee</artifactId>-->
-                        <!--<version>1.0</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
             </plugin>
         </plugins>
     </build>
@@ -214,7 +122,8 @@
                 <testRunId>${targetsio.productName}-${targetsio.productRelease}-load-${maven.build.timestamp}</testRunId>
                 <test.duration>600</test.duration>
                 <test.threads>20</test.threads>
-                <test.rampup>120</test.rampup>
+                <test.rampup>1</test.rampup>
+                <test.throughput>2</test.throughput>
             </properties>
         </profile>
         <profile>
@@ -225,7 +134,7 @@
                 <testRunId>${targetsio.productName}-${targetsio.productRelease}-endurance-${maven.build.timestamp}</testRunId>
                 <test.duration>174600</test.duration>
                 <test.threads>100</test.threads>
-                <test.rampup>1</test.rampup>
+                <test.rampup>300</test.rampup>
             </properties>
         </profile>
 
