@@ -232,7 +232,7 @@
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <longProp name="ThreadGroup.start_time">1475690021000</longProp>
         <longProp name="ThreadGroup.end_time">1475690021000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">${__P(test.duration,60)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
@@ -1440,10 +1440,10 @@
         <hashTree/>
         <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
           <collectionProp name="load_profile">
-            <collectionProp name="-293784611">
+            <collectionProp name="1058529944">
               <stringProp name="1152040977">${__P(test.throughput,2)}</stringProp>
               <stringProp name="1152040977">${__P(test.throughput,2)}</stringProp>
-              <stringProp name="53430">600</stringProp>
+              <stringProp name="-1073426503">${__P(test.duration,60)}</stringProp>
             </collectionProp>
           </collectionProp>
         </kg.apc.jmeter.timers.VariableThroughputTimer>
