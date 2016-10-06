@@ -98,7 +98,7 @@
                     <!--</proxyConfig>-->
                     <jMeterProcessJVMSettings>
                         <xms>1024</xms>
-                        <xmx>4096</xmx>
+                        <xmx>1024</xmx>
                     </jMeterProcessJVMSettings>
 
                     <jmeterExtensions>
