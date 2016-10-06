@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testResults version="1.2">
-<httpSample t="0" lt="0" ts="1444153884086" s="false" lb="Start test event" rc="Non HTTP response code: java.net.URISyntaxException" rm="Non HTTP response message: Illegal character in authority at index 7: http://localhost :3000/events" tn="setUp Thread Group 1-1" dt="text" by="938" ng="1" na="1"/>
-<httpSample t="0" lt="0" ts="1444153884155" s="false" lb="End test event" rc="Non HTTP response code: java.net.URISyntaxException" rm="Non HTTP response message: Illegal character in authority at index 7: http://localhost :3000/events" tn="tearDown Thread Group 1-1" dt="text" by="938" ng="1" na="1"/>
-
-</testResults>
