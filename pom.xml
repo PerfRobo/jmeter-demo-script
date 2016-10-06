@@ -89,9 +89,9 @@
 
 
                     </propertiesUser>
-                    <proxyConfig>
-                    <host>localhost</host>
-                    <port>8888</port>
+                    <!--<proxyConfig>-->
+                    <!--<host>localhost</host>-->
+                    <!--<port>8888</port>-->
                     <!--<username>jimbob</username>-->
                     <!--<password>correct horse battery staple</password>-->
                     <!--<hostExclusions>localhost|*.lazerycode.com</hostExclusions>-->
