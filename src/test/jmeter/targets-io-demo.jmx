@@ -1438,7 +1438,7 @@
           <stringProp name="variableName">user</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="false">
+        <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
           <collectionProp name="load_profile">
             <collectionProp name="-293784611">
               <stringProp name="1152040977">${__P(test.throughput,2)}</stringProp>
