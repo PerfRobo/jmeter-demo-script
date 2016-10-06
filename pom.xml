@@ -158,7 +158,7 @@
                 <testRunId>${targetsio.productName}-${targetsio.productRelease}-load-${maven.build.timestamp}</testRunId>
                 <test.duration>600</test.duration>
                 <test.threads>5</test.threads>
-                <test.rampup>1</test.rampup>
+                <test.rampup>30</test.rampup>
                 <test.throughput>2</test.throughput>
             </properties>
         </profile>
